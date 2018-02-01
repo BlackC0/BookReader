@@ -9,6 +9,7 @@ public class SearchData {
     private String name;
     private String type;
     private String author;
+    private String bookUrl;
     private String lastUpdateTime;
     private String lastUpdateChapter;
     private String lastUpdateChapterUrl;
@@ -16,10 +17,11 @@ public class SearchData {
     public SearchData() {
     }
 
-    public SearchData(String name, String type, String author, String lastUpdateTime, String lastUpdateChapter, String lastUpdateChapterUrl) {
+    public SearchData(String name, String type, String author, String bookUrl, String lastUpdateTime, String lastUpdateChapter, String lastUpdateChapterUrl) {
         this.name = name;
         this.type = type;
         this.author = author;
+        this.bookUrl = bookUrl;
         this.lastUpdateTime = lastUpdateTime;
         this.lastUpdateChapter = lastUpdateChapter;
         this.lastUpdateChapterUrl = lastUpdateChapterUrl;
@@ -47,6 +49,14 @@ public class SearchData {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getBookUrl() {
+        return bookUrl;
+    }
+
+    public void setBookUrl(String bookUrl) {
+        this.bookUrl = bookUrl;
     }
 
     public String getLastUpdateTime() {

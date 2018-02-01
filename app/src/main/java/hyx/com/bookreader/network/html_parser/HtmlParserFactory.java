@@ -6,7 +6,7 @@ package hyx.com.bookreader.network.html_parser;
 
 public class HtmlParserFactory {
 
-    public static final int HTML_PARSER_SEARCH = 0x19;
+    public static final int HTML_PARSER_SEARCH = 0x10;
 
     public static HtmlParser Creator(int type, String html) {
         HtmlParser htmlParser = null;
