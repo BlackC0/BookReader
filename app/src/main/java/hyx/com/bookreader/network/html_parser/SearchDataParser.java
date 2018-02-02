@@ -28,7 +28,7 @@ public class SearchDataParser implements HtmlParser<SearchData>{
 
     public SearchDataParser(String parseHtml) {
         this.parseHtml = parseHtml;
-        doc = Jsoup.parse(parseHtml);
+        doc = Jsoup.parse(this.parseHtml);
     }
 
     @Override

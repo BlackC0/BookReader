@@ -11,8 +11,17 @@ public interface Request {
      * @param keyword 关键词
      * @return
      */
-    @GET("keyword/{keyword}")
-    Call<String> get(@Path("keyword") String keyword);
+    @GET("search.htm/keyword/{keyword}")
+    Call<String> search(@Path("keyword") String keyword);
+
+
+    /**
+     * 书本目录
+     * @param location 书本目录的具体地址
+     * @return
+     */
+    @GET("{location}")
+    Call<String> bookCatalogue(@Path("location") String location);
 
 
 }
