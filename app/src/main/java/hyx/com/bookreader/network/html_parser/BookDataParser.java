@@ -32,15 +32,14 @@ public class BookDataParser implements HtmlParser<BookData> {
         List<BookData> datas = new ArrayList<>();
         BookData data = new BookData();
 
-        Elements img = doc.getElementsByClass("img");
-        Elements info = doc.getElementsByClass("info");
+        Elements info = doc.getElementsByClass("bookinfo");
 
         //封面图片
-        String coverUrl = img.get(0).getElementsByTag("img").get(0).attr("src");
+        String coverUrl = doc.getElementsByTag("img").get(0).attr("src");
         data.setCoverUrl(coverUrl);
 
         //书名
-        String bookName = info.get(0).getElementsByTag("span").get(0).text();
+        String bookName = info.get(0).getElementsByTag("h2").get(0).text();
         data.setBookName(bookName);
 
         //作者
@@ -48,24 +47,28 @@ public class BookDataParser implements HtmlParser<BookData> {
         data.setAuthor(author);
 
         //简介
-        String about = doc.getElementsByClass("summary").get(1).text().substring(2);
+        String about = doc.getElementById("all").text().substring(2);
         data.setAbout(about);
 
         //类别
-        String type = info.get(0).getElementsByTag("a").get(0).text();
+        String type = info.get(0).getElementsByClass("invoke").get(0).text();
         data.setType(type);
 
         //最新章节
-        String lastUpdateChapter = info.get(0).getElementsByTag("a").get(1).text();
+        String lastUpdateChapter = info.get(0).getElementsByClass("invoke").get(1).text();
         data.setLastUpdateChapter(lastUpdateChapter);
 
         //最新章节的url
-        String lastUpdateChapterUrl = info.get(0).getElementsByTag("a").get(1).attr("href");
+        String lastUpdateChapterUrl = info.get(0).getElementsByClass("invoke").get(1).attr("href");
         data.setLastUpdateChapterUrl(lastUpdateChapterUrl);
 
+        //下载地址
+        String downloadLink = doc.getElementsByClass("global-btn-radius add-shelf-transcode global-flex-1 invoke").get(0).attr("href");
+        data.setTxtDownloadUrl(downloadLink);
+
         //全部章节的url
-        String allChapterUrl = doc.getElementsByClass("a_link").get(0).attr("href");
-        int length = (Constant.baseUrl + allChapterUrl).length();
+        String allChapterUrl = doc.getElementsByClass("global-btn-radius start-read-transcode global-flex-1 invoke").get(0).attr("href");
+        int length = ("http:" + allChapterUrl).length();
         String bookUrl = (Constant.baseUrl + allChapterUrl).substring(0, length - 9);
 
         List<String> catalogueText = new ArrayList<>();

@@ -15,19 +15,23 @@ public class BookData {
     private String author;
     private String lastUpdateChapter;
     private String lastUpdateChapterUrl;
+    private String txtDownloadUrl;
     private List<String> catalogueText;
     private List<String> catalogueUrl;
+
 
     public BookData() {
     }
 
-    public BookData(String coverUrl, String bookName, String type, String about, String author, String lastUpdateChapter, String lastUpdateChapterUrl, List<String> catalogueText, List<String> catalogueUrl) {
+    public BookData(String coverUrl, String bookName, String type, String about, String author, String lastUpdateChapter, String lastUpdateChapterUrl, String txtDownloadUrl, List<String> catalogueText, List<String> catalogueUrl) {
         this.coverUrl = coverUrl;
         this.bookName = bookName;
         this.type = type;
+        this.about = about;
         this.author = author;
         this.lastUpdateChapter = lastUpdateChapter;
         this.lastUpdateChapterUrl = lastUpdateChapterUrl;
+        this.txtDownloadUrl = txtDownloadUrl;
         this.catalogueText = catalogueText;
         this.catalogueUrl = catalogueUrl;
     }
@@ -86,6 +90,14 @@ public class BookData {
 
     public void setLastUpdateChapterUrl(String lastUpdateChapterUrl) {
         this.lastUpdateChapterUrl = lastUpdateChapterUrl;
+    }
+
+    public String getTxtDownloadUrl() {
+        return txtDownloadUrl;
+    }
+
+    public void setTxtDownloadUrl(String txtDownloadUrl) {
+        this.txtDownloadUrl = txtDownloadUrl;
     }
 
     public List<String> getCatalogueText() {

@@ -11,7 +11,7 @@ public interface Request {
      * @param keyword 关键词
      * @return
      */
-    @GET("search.htm/keyword/{keyword}")
+    @GET("search.htm/keyword/{keyword}")//需要修改
     Call<String> search(@Path("keyword") String keyword);
 
 

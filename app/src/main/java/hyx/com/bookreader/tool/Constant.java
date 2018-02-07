@@ -6,7 +6,7 @@ package hyx.com.bookreader.tool;
 
 public class Constant {
 
-    public static final String baseUrl = "http://m.duyidu.net/";
+    public static final String baseUrl = "https://m.22ff.com/";
 
 
 }
