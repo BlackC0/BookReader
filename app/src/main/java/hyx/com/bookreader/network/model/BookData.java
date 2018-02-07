@@ -11,6 +11,7 @@ public class BookData {
     private String coverUrl;
     private String bookName;
     private String type;
+    private String about;
     private String author;
     private String lastUpdateChapter;
     private String lastUpdateChapterUrl;
@@ -20,7 +21,7 @@ public class BookData {
     public BookData() {
     }
 
-    public BookData(String coverUrl, String bookName, String type, String author, String lastUpdateChapter, String lastUpdateChapterUrl, List<String> catalogueText, List<String> catalogueUrl) {
+    public BookData(String coverUrl, String bookName, String type, String about, String author, String lastUpdateChapter, String lastUpdateChapterUrl, List<String> catalogueText, List<String> catalogueUrl) {
         this.coverUrl = coverUrl;
         this.bookName = bookName;
         this.type = type;
@@ -53,6 +54,14 @@ public class BookData {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
     }
 
     public String getAuthor() {
