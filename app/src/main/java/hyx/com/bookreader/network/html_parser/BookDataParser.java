@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hyx.com.bookreader.network.model.BookData;
-import hyx.com.bookreader.tool.Constant;
 
 /**
  * Created by Black.C on 2018/1/30.
@@ -63,22 +62,21 @@ public class BookDataParser implements HtmlParser<BookData> {
         data.setLastUpdateChapterUrl(lastUpdateChapterUrl);
 
         //下载地址
-        String downloadLink = doc.getElementsByClass("global-btn-radius add-shelf-transcode global-flex-1 invoke").get(0).attr("href");
+        String downloadLink = "http:" + doc.getElementsByClass("global-btn-radius add-shelf-transcode global-flex-1 invoke").get(0).attr("href");
         data.setTxtDownloadUrl(downloadLink);
 
         //全部章节的url
-        String allChapterUrl = doc.getElementsByClass("global-btn-radius start-read-transcode global-flex-1 invoke").get(0).attr("href");
-        int length = ("http:" + allChapterUrl).length();
-        String bookUrl = (Constant.baseUrl + allChapterUrl).substring(0, length - 9);
+        String allChapterUrl = "http:" + doc.getElementsByClass("global-btn-radius start-read-transcode global-flex-1 invoke").get(0).attr("href");
 
         List<String> catalogueText = new ArrayList<>();
         List<String> catalogueUrl = new ArrayList<>();
 
         try {
-            doc = Jsoup.connect(Constant.baseUrl + allChapterUrl).get();
+            doc = Jsoup.connect(allChapterUrl).get();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         while (true) {
             Elements chapterList = doc.getElementsByTag("li");
             for (Element chapterText : chapterList) {
@@ -90,7 +88,7 @@ public class BookDataParser implements HtmlParser<BookData> {
             String selectionUrl = "";
             for (Element selection : pagerSelection) {
                 if ("下一页".equals(selection.text())) {
-                    selectionUrl = selection.attr("href");
+                    selectionUrl = "http:" + selection.attr("href");
                 }
             }
             if ("".equals(selectionUrl)) {
@@ -98,7 +96,7 @@ public class BookDataParser implements HtmlParser<BookData> {
             }
 
             try {
-                doc = Jsoup.connect(bookUrl + "/" + selectionUrl).get();
+                doc = Jsoup.connect(selectionUrl).get();
             } catch (IOException e) {
                 e.printStackTrace();
             }
