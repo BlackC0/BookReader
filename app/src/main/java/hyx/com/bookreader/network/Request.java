@@ -3,6 +3,7 @@ package hyx.com.bookreader.network;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface Request {
 
@@ -11,8 +12,8 @@ public interface Request {
      * @param keyword 关键词
      * @return
      */
-    @GET("search.htm/keyword/{keyword}")//需要修改
-    Call<String> search(@Path("keyword") String keyword);
+    @GET("search.htm")//需要修改
+    Call<String> search(@Query("keyword") String keyword);
 
 
     /**
